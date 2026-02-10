@@ -70,7 +70,7 @@ The API is fully documented using **Postman**, including:
 
 🔗 **Postman Collection (Public)**
 ```
-👉 https://www.postman.com/navigation-astronomer-66264950/workspace/teddy-workspace/collection/23232897-48f42634-002b-4b04-b2c4-4479108dfb9e?action=share&creator=23232897
+https://www.postman.com/navigation-astronomer-66264950/workspace/teddy-workspace/collection/23232897-48f42634-002b-4b04-b2c4-4479108dfb9e?action=share&creator=23232897
 ```
 
 ### How to Use the Collection
