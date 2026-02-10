@@ -136,6 +136,12 @@ E2E tests cover:
 # install dependencies
 npm install
 
+# create migration
+npm run typeorm migration:generate src/database/{namemigration}
+
+# run migration 
+npm run typeorm migration:run
+
 # run development server
 npm run start:dev
 ```
