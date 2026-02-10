@@ -69,7 +69,9 @@ The API is fully documented using **Postman**, including:
 * Environment variables
 
 🔗 **Postman Collection (Public)**
-👉 *Paste your Postman public link here*
+```
+👉 https://www.postman.com/navigation-astronomer-66264950/workspace/teddy-workspace/collection/23232897-48f42634-002b-4b04-b2c4-4479108dfb9e?action=share&creator=23232897
+```
 
 ### How to Use the Collection
 
@@ -150,15 +152,6 @@ Server will start at:
 
 ```
 http://localhost:3000
-```
-
----
-
-## API Documentation
-
-Postman Collection :
-```
-https://www.postman.com/navigation-astronomer-66264950/workspace/teddy-workspace/collection/23232897-48f42634-002b-4b04-b2c4-4479108dfb9e?action=share&creator=23232897
 ```
 
 ---
