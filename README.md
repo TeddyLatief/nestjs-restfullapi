@@ -1,98 +1,178 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚀 NestJS REST API – Auth, Users & Posts
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A production‑ready REST API built with **NestJS**, **TypeORM**, and **JWT Authentication**. This project demonstrates clean architecture, proper authorization flow, relational data handling, and complete API documentation using **Postman**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## ✨ Features
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* 🔐 JWT‑based Authentication
+* 👤 Users Management (CRUD)
+* 📝 Posts Management (CRUD)
+* 🔗 One‑to‑Many Relationship (Users ↔ Posts)
+* 🛡️ Authorization using Guards & Custom Decorators
+* 🧪 End‑to‑End (E2E) Testing
+* 📬 Postman Collection (Public & Shareable)
+* ⚙️ Environment‑based Configuration
 
-## Project setup
+---
 
-```bash
-$ npm install
+## 🧱 Project Architecture & Pattern
+
+This project follows **Modular Architecture with Layered Pattern**, which is the most common and recommended pattern in real‑world NestJS applications.
+
+### Layers
+
+* **Controller** → Handles HTTP requests & responses
+* **Service** → Contains business logic
+* **Entity** → Database schema & relations
+* **Guard / Decorator** → Authorization & request context
+
+### Why This Pattern?
+
+* Separation of concerns
+* High maintainability & scalability
+* Easy testing (unit & E2E)
+* Aligns with NestJS core philosophy
+
+> This pattern mirrors how backend systems are built in production environments.
+
+---
+
+## 🗂️ Entity Relationship Diagram (ERD)
+
+```text
+User (1) ────< (N) Post
 ```
 
-## Compile and run the project
+* One user can have multiple posts
+* Deleting a user will cascade delete their posts
+
+---
+
+## 🔐 Authentication Flow
+
+1. User registers via `POST /users`
+2. User logs in via `POST /auth/login`
+3. API returns **JWT Access Token**
+4. Token is used as `Bearer Token` for secured endpoints
+
+---
+
+## 📬 API Documentation (Postman)
+
+The API is fully documented using **Postman**, including:
+
+* Example requests
+* Expected responses
+* Authorization handling
+* Environment variables
+
+🔗 **Postman Collection (Public)**
+👉 *Paste your Postman public link here*
+
+### How to Use the Collection
+
+1. Open the Postman link
+2. Fork or copy the collection
+3. Set environment variable:
+
+   * `base_url` → `http://localhost:3000`
+4. Run **Auth → Login**
+5. JWT token will be stored automatically
+6. Test secured endpoints
+
+---
+
+## 📌 Available Endpoints
+
+### Auth
+
+| Method | Endpoint      | Description           |
+| ------ | ------------- | --------------------- |
+| POST   | `/auth/login` | Login & get JWT token |
+
+### Users
+
+| Method | Endpoint     | Description    |
+| ------ | ------------ | -------------- |
+| POST   | `/users`     | Create user    |
+| GET    | `/users`     | Get all users  |
+| GET    | `/users/:id` | Get user by ID |
+| PATCH  | `/users/:id` | Update user    |
+| DELETE | `/users/:id` | Delete user    |
+
+### Posts (Protected)
+
+| Method | Endpoint     | Description    |
+| ------ | ------------ | -------------- |
+| POST   | `/posts`     | Create post    |
+| GET    | `/posts`     | Get all posts  |
+| GET    | `/posts/:id` | Get post by ID |
+| PATCH  | `/posts/:id` | Update post    |
+| DELETE | `/posts/:id` | Delete post    |
+
+---
+
+## 🧪 Testing
+
+### Run E2E Tests
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run test:e2e
 ```
 
-## Run tests
+E2E tests cover:
+
+* User registration
+* Authentication
+* Authorized access to protected routes
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-# unit tests
-$ npm run test
+# install dependencies
+npm install
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# run development server
+npm run start:dev
 ```
 
-## Deployment
+Server will start at:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```
+http://localhost:3000
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## 🛠️ Tech Stack
 
-Check out a few resources that may come in handy when working with NestJS:
+* **NestJS**
+* **TypeScript**
+* **TypeORM**
+* **PostgreSQL**
+* **JWT & Passport**
+* **Jest & Supertest**
+* **Postman**
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+---
 
-## Support
+## 📈 Notes
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+This project is designed to reflect **real‑world backend practices**, including authentication flow, authorization guards, relational data modeling, and API documentation.
 
-## Stay in touch
+Perfect for:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+* Backend portfolio
+* Technical assessment
+* Learning reference
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 👨‍💻 Author
+
+**Teddy Rizqi**
+Backend Developer | NestJS Enthusiast
