@@ -161,7 +161,7 @@ http://localhost:3000
 * **NestJS**
 * **TypeScript**
 * **TypeORM**
-* **PostgreSQL**
+* **MySQL**
 * **JWT & Passport**
 * **Jest & Supertest**
 * **Postman**
